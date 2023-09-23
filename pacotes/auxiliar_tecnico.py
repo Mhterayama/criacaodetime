@@ -1,5 +1,5 @@
 class AuxiliarTecnico:
-    def __init__(self, nome_do_tecnico: str, nome_time: str, esquema_tatico: float) -> None:
+    def __init__(self, nome_do_tecnico: str, nome_time: str, esquema_tatico: str) -> None:
         """
         Recebe o nome da pessoa, o nome do time, e qual esquema tatico de sua escolha.
         """
