@@ -9,16 +9,9 @@ from pacotes.preparador_fisico import PreparadorFisico
 class MenuCadastro:
     def __init__(self) -> None:
         self.lista_times = []
+        self.jogadores = []
 
-    def cadastrar_jogador(self):
-        jogadores = []
-        nome = input("Nome do jogador: ")
-        time = input("Nome do time do jogador: ")
-        numero_camisa = input("Número da camisa do jogador: ")
-        jogador = Jogador(nome, time, numero_camisa)
-        jogadores.append(jogador)
-        print("Jogador cadastrado com sucesso!")
-        return jogadores
+        
     
     def cadastrar_time(self):
         nome = input("Nome do time: ")
@@ -28,9 +21,37 @@ class MenuCadastro:
         self.lista_times.append(time)
         print("Time cadastrado com sucesso!")
         
+    def mostrar_times (self,):
+        for time in self.lista_times:
+            time.mostra_time()
     
+    def cadastrar_jogador(self):
+        time = self.localizar_time()
+        if time == None:
+            return
+        nome = input("Nome do jogador: ")
+        numero_camisa = input("Número da camisa do jogador: ")
+        jogador = Jogador(nome, numero_camisa)
+        time.adiciona_jogador(jogador)
+        print("Jogador cadastrado com sucesso!")
+
+    def localizar_time (self):
+        escolha = input("Qual time deseja verificar os jogadores? ")       
+        for time in self.lista_times:
+            if escolha == time.nome_do_time:
+                return time
+        print('time não encontrado!!')
+
+    def mostrar_jogadores (self):
+        escolha = input("Qual time deseja verificar os jogares? ")
+        for time in self.lista_times:
+            if escolha == time.nome_do_time:
+                pass
+                
+
+        
+    '''        
     def cadastrar_comissao_tecnica(self,):
-        comissao_tecnica = []
         nome_do_tecnico = input("Digite o nome do Tecnico: ")
         nome_do_time = input("Digite o nome do Time: ")
         esquema_tecnico = input("Qual o esquema tatico de sua preferencia: ")
@@ -46,17 +67,15 @@ class MenuCadastro:
         parte_do_elenco = input("Digite com qual parte tecnica vai trabalhar(Goleiro ou Linha): ")
         preparador = PreparadorFisico(nome_prepador,nome_do_time,parte_do_elenco)
         comissao_tecnica.append(preparador)
-        
-    def mostrar_times (self,):
-        for time in self.lista_times:
-            time.mostra_time()
-           
-
+    '''
         
     def teste_sistema_menu(self,):
-        time = Time('America','Belo Horizonte','Coelho',)
-        self.lista_times.append(time)
-        self.mostrar_times()
+        time1 = Time('Cruzeiro','Belo Horizonte', 'Rapoza')
+        time2 = Time('America','Belo Horizonte','Coelho',)
+        self.lista_times.append(time1)
+        self.lista_times.append(time2)
+        self.cadastrar_jogador()
+        time2.mostra_time()
         
     def sistema_menu (self,):
     
@@ -64,7 +83,7 @@ class MenuCadastro:
             print("\nMenu:")
             print("1. Cadastrar Time")
             print("2. Mostrar Times")
-            print("3. Cadastrar Comissão Técnica")
+            print("3. Cadastrar Jogador")
             print("4. Sair")
         
             self.escolha = input("Digite a sua opeção: ")
@@ -73,8 +92,8 @@ class MenuCadastro:
                self.cadastrar_time()
             elif self.escolha == "2":
                 self.mostrar_times()
-            # elif self.escolha == "2":
-            #     cadastrar_jogador()
+            elif self.escolha == "3":
+                self.cadastrar_jogador()
             # elif self.escolha == "3":
             #     cadastrar_comissao_tecnica()
             elif self.escolha == "4":

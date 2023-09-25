@@ -10,8 +10,8 @@ class Time :
         self.comissao_tecnica = []
                
     
-    def adiciona_jogador (self,):
-        pass
+    def adiciona_jogador (self,jogador: Jogador):
+        self.jogadores.append(jogador)
         
     def mostra_time (self):
         print(f'Nome do Time: {self.nome_do_time}')
