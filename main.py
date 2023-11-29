@@ -18,7 +18,7 @@ from pacotes.time import Time
 # testar()
 menu = MenuCadastro()
 
-menu.teste_sistema_menu()
+menu.sistema_menu()
 
 
 

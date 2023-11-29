@@ -6,6 +6,6 @@ class Jogador :
         self.numero_camisa = numero_camisa
     
     def mostra_nome(self)-> str:
-        return self.nome
+        return f'{self.nome}, Camisa : {self.numero_camisa}'
         
         
